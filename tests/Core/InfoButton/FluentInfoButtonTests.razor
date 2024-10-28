@@ -1,0 +1,123 @@
+﻿@using Xunit;
+@inherits TestContext
+
+@code
+{
+    public FluentInfoButtonTests()
+    {
+        JSInterop.Mode = JSRuntimeMode.Loose;
+        Services.AddSingleton(new LibraryConfiguration());
+    }
+
+    [Fact]
+    public void FluentInfoButton_Default()
+    {
+        // Arrange && Act
+        var cut = Render(@<FluentInfoButton Id="InfoButton">
+            This is example information for an InfoButton
+            <a href="https://www.fluentui-blazor.net/InfoButton">Learn more</a>
+        </FluentInfoButton>);
+
+        // Assert
+        cut.Verify();
+    }
+
+    [Theory]
+    [InlineData(TooltipPosition.Top)]
+    [InlineData(TooltipPosition.Bottom)]
+    [InlineData(TooltipPosition.Start)]
+    [InlineData(TooltipPosition.End)]
+    [InlineData(TooltipPosition.Left)]
+    [InlineData(TooltipPosition.Right)]
+    public void FluentInfoButton_Position(TooltipPosition position)
+    {
+        // Arrange && Act
+        var cut = Render(@<FluentInfoButton Id="InfoButton" Position=@(position)>
+            This is example information for an InfoButton
+            <a href="https://www.fluentui-blazor.net/InfoButton">Learn more</a>
+        </FluentInfoButton>);
+
+        // Assert
+        cut.Verify();
+    }
+
+    [Fact]
+    public void FluentInfoButton_MaxWidth()
+    {
+        // Arrange && Act
+        var cut = Render(@<FluentInfoButton Id="InfoButton" MaxWidth="300px">
+            This is example information for an InfoButton
+            <a href="https://www.fluentui-blazor.net/InfoButton">Learn more</a>
+        </FluentInfoButton>);
+
+        // Assert
+        cut.Verify();
+    }
+
+    [Fact]
+    public void FluentInfoButton_IconColor()
+    {
+        // Arrange && Act
+        var cut = Render(@<FluentInfoButton Id="InfoButton" IconColor="Color.Custom" IconCustomColor="red">
+            This is example information for an InfoButton
+            <a href="https://www.fluentui-blazor.net/InfoButton">Learn more</a>
+        </FluentInfoButton>);
+
+        // Assert
+        cut.Verify();
+    }
+
+    [Fact]
+    public void FluentInfoButton_IconCustomColor()
+    {
+        // Arrange && Act
+        var cut = Render(@<FluentInfoButton Id="InfoButton" IconColor="Color.Custom" IconCustomColor="red">
+            This is example information for an InfoButton
+            <a href="https://www.fluentui-blazor.net/InfoButton">Learn more</a>
+        </FluentInfoButton>);
+
+        // Assert
+        cut.Verify();
+    }
+
+    [Fact]
+    public void FluentInfoButton_IconHover()
+    {
+        // Arrange && Act
+        var cut = Render(@<FluentInfoButton Id="InfoButton" IconHover="@(new CoreIcons.Regular.Size20.Add())">
+            This is example information for an InfoButton
+            <a href="https://www.fluentui-blazor.net/InfoButton">Learn more</a>
+        </FluentInfoButton>);
+
+        // Assert
+        cut.Verify();
+    }
+
+    [Fact]
+    public void FluentInfoButton_Icon()
+    {
+        // Arrange && Act
+        var cut = Render(@<FluentInfoButton Id="InfoButton" Icon="@(new CoreIcons.Regular.Size24.Add())">
+            This is example information for an InfoButton
+            <a href="https://www.fluentui-blazor.net/InfoButton">Learn more</a>
+        </FluentInfoButton>);
+
+        // Assert
+        cut.Verify();
+    }
+
+    [Fact]
+    public void FluentInfoButton_ChildContent()
+    {
+        // Arrange && Act
+        var cut = Render(@<FluentInfoButton Id="InfoButton">
+            This is example information for an InfoButton
+            <a href="https://www.fluentui-blazor.net/InfoButton">Learn more</a>
+        </FluentInfoButton>);
+
+        // Assert
+        cut.Verify();
+    }
+}
+
+
